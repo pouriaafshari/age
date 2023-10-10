@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age</title>
+</head>
+<body>
+    <div id="countdown"></div>
+
+    <script>
+        function updateCountdown() {
+            const startDate = new Date("2002-08-31T00:00:00Z");
+            const currentDate = new Date();
+            const timeDifference = currentDate - startDate;
+
+            const years = Math.floor(timeDifference / (365.25 * 24 * 60 * 60 * 1000));
+            const remainingTime = timeDifference % (365.25 * 24 * 60 * 60 * 1000);
+
+            const months = Math.floor(remainingTime / (30.44 * 24 * 60 * 60 * 1000));
+            const days = Math.floor(remainingTime / (24 * 60 * 60 * 1000)) % 30;
+            const hours = Math.floor((remainingTime / (60 * 60 * 1000)) % 24);
+            const minutes = Math.floor((remainingTime / (60 * 1000)) % 60);
+            const seconds = Math.floor((remainingTime / 1000) % 60);
+
+            document.getElementById("countdown").innerText = `${years} Years : ${months} Months : ${days} Days : ${hours} Hours : ${minutes} Minutes : ${seconds} Seconds`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
